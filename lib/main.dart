@@ -38,7 +38,7 @@ class ProfilePetApp extends StatelessWidget {
     );
 
     return MaterialApp(
-      title: 'My Profile and Pet',
+      title: "Ryzel's Profile",
       theme: ThemeData(
         colorScheme: colorScheme,
         scaffoldBackgroundColor: _backgroundColor,
