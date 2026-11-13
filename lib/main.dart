@@ -904,7 +904,7 @@ class OpenLibraryApi {
 
 class OmdbApi {
   final String apiKey;
-  static const _baseUrl = 'http://www.omdbapi.com/';
+  static const _baseUrl = 'https://www.omdbapi.com/';
 
   OmdbApi({required this.apiKey});
 
@@ -920,7 +920,14 @@ class OmdbApi {
       '$_baseUrl?apikey=$apiKey&s=${Uri.encodeComponent(query)}&type=movie',
     );
 
-    final response = await http.get(uri);
+    late final http.Response response;
+    try {
+      response = await http.get(uri);
+    } on http.ClientException {
+      throw Exception(
+        'Unable to connect to OMDb. Check your internet connection.',
+      );
+    }
 
     if (response.statusCode != 200) {
       throw Exception('OMDb error: ${response.statusCode}');
@@ -949,7 +956,14 @@ class OmdbApi {
     }
 
     final uri = Uri.parse('$_baseUrl?apikey=$apiKey&i=$imdbID&plot=full');
-    final response = await http.get(uri);
+    late final http.Response response;
+    try {
+      response = await http.get(uri);
+    } on http.ClientException {
+      throw Exception(
+        'Unable to connect to OMDb. Check your internet connection.',
+      );
+    }
 
     if (response.statusCode != 200) {
       throw Exception('OMDb detail error: ${response.statusCode}');
