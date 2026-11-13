@@ -1,6 +1,0 @@
-{
-  "OMDB_API_KEY": "your-omdb-key",
-  "CONTENTFUL_SPACE": "your-space-id",
-  "CONTENTFUL_TOKEN": "your-content-delivery-token",
-  "CONTENTFUL_ENVIRONMENT": "master"
-}
